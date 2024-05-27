@@ -1,12 +1,11 @@
 package com.example.BreakdownTODOList.controller;
 
-import com.example.BreakdownTODOList.entity.TodoList;
+import com.example.BreakdownTODOList.entity.TodoItem;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.net.ssl.SSLEngineResult;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,17 +13,18 @@ import java.util.List;
 public class TodoListController {
 
     @GetMapping("/list")
-    public ResponseEntity<TodoList> getList(){
+    public ResponseEntity<List<TodoItem>> getList(){
 
-        List<TodoList> list = new ArrayList<>();
-        list.add(new TodoList(1, "Happy", null));
-        list.add(new TodoList(2, "Sad", null));
-        list.add(new TodoList(3, "Eating", null));
-        list.add(new TodoList(4, "Safe", null));
+        TodoItem item1 = new TodoItem(1, "Do Something!");
+        TodoItem item2 = new TodoItem(1, "Do Something!");
+        TodoItem item3 = new TodoItem(1, "Do Something!");
 
-        TodoList parent = new TodoList(5, "TodoList", list);
+        List<TodoItem> list = new ArrayList<>();
+        list.add(item1);
+        list.add(item2);
+        list.add(item3);
 
-        return new ResponseEntity<>(parent, HttpStatus.OK);
+        return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
 }
